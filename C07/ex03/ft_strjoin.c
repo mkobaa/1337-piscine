@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkobaa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 21:19:45 by mkobaa            #+#    #+#             */
-/*   Updated: 2023/08/03 21:20:28 by mkobaa           ###   ########.fr       */
+/*   Created: 2023/08/03 21:27:46 by mkobaa            #+#    #+#             */
+/*   Updated: 2023/08/03 21:29:29 by mkobaa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,30 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*dest;
+	int		i;
+	int		j;
 
-	dest = malloc((ft_strlen(src) + 1) * sizeof(char));
+	i = 0;
+	j = 0;
+	while (i < size)
+		j += ft_strlen(strs[i++]);
+	if (size > 0)
+		j += (size - 1) * ft_strlen(sep);
+	dest = malloc((j + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
-	return (ft_strcpy(dest, src));
+	i = 0;
+	j = 0;
+	while (i < size)
+	{
+		ft_strcpy(dest + j, strs[i]);
+		j += ft_strlen(strs[i]);
+		if (++i < size)
+			j += dest + j + ft_strlen(sep) - ft_strcpy(dest + j, sep);
+	}
+	dest[j] = '\0';
+	return (dest);
 }

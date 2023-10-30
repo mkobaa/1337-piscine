@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkobaa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 02:21:42 by mkobaa            #+#    #+#             */
-/*   Updated: 2023/07/14 01:05:50 by mkobaa           ###   ########.fr       */
+/*   Created: 2023/07/14 11:57:14 by mkobaa            #+#    #+#             */
+/*   Updated: 2023/07/15 21:52:29 by mkobaa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_numbers(void)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	char	i;
+	int	swp_a;
 
-	i = '0';
-	while (i <= '9')
-	{
-		write (1, &i, 1);
-		i++;
-	}
+	swp_a = *a;
+	*a = *a / *b;
+	*b = swp_a % *b;
 }

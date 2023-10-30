@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkobaa <mkobaa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/26 09:29:49 by mkobaa            #+#    #+#             */
+/*   Updated: 2023/07/27 21:51:41 by mkobaa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -5,53 +17,28 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	display(int nb)
-{
-	int	first;
-	int	second;
-
-	if (nb > 9)
-	{
-		first = nb / 10;
-		second = nb % 10;
-		ft_putchar(first + 48);
-		ft_putchar(second + 48);
-	}
-	else
-	{
-		ft_putchar('0');
-		ft_putchar(nb + 48);
-	}
-}
-
 void	ft_print_comb2(void)
 {
 	int	i;
-	int	o;
+	int	j;
 
 	i = 0;
-	while (i <= 99)
+	while (i <= 98)
 	{
-		o = i + 1;
-		while (o <= 99)
+		j = i + 1;
+		while (j <= 99)
 		{
-			display(i);
+			ft_putchar(i / 10 + '0');
+			ft_putchar(i % 10 + '0');
 			ft_putchar(' ');
-			display(o);
-			if (i < 98 || o < 99)
+			ft_putchar(j / 10 + '0');
+			ft_putchar(j % 10 + '0');
+			if (i < 98)
 			{
-				ft_putchar(',');
-				ft_putchar(' ');
+				write(1, ", ", 2);
 			}
-			++o;
+			j++;
 		}
-		++i;
+		i++;
 	}
 }
-
-/*
-int main()
-{
-	ft_print_comb2();
-}
-*/

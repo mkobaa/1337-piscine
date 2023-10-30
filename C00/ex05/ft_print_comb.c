@@ -1,35 +1,41 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkobaa <mkobaa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/13 05:43:19 by mkobaa            #+#    #+#             */
+/*   Updated: 2023/07/27 21:46:55 by mkobaa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+#include <unistd.h>
 
 void	ft_print_comb(void)
 {
-	char	numbers[3];
+	char	x;
+	char	y;
+	char	z;
 
-	numbers[0] = '0';
-	while (numbers[0] <= '7')
+	x = 48;
+	while (x <= 55)
 	{
-		numbers[1] = numbers[0] + 1;
-		while (numbers[1] <= '8')
+		y = x + 1;
+		while (y <= 56)
 		{
-			numbers[2] = numbers[1] + 1;
-			while (numbers[2] <= '9')
+			z = y + 1;
+			while (z <= 57)
 			{
-				ft_putchar(numbers[0]);
-				ft_putchar(numbers[1]);
-				ft_putchar(numbers[2]);
-				if (numbers[0] != '7')
-				{
-					ft_putchar(',');
-					ft_putchar(' ');
-				}
-				numbers[2]++;
+				write(1, &x, 1);
+				write(1, &y, 1);
+				write(1, &z, 1);
+				if (x != 55)
+					write(1, ", ", 2);
+				z++;
 			}
-			numbers[1]++;
+			y++;
 		}
-		numbers[0]++;
+		x++;
 	}
 }

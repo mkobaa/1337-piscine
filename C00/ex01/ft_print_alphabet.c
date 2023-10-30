@@ -1,18 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkobaa <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/13 00:26:29 by mkobaa            #+#    #+#             */
+/*   Updated: 2023/07/14 01:11:03 by mkobaa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_print_alphabet(void)
 {
-	write(1, &c, 1);
-}
-
-void ft_print_alphabet(void)
-{
-	int i;
+	char	i;
 
 	i = 'a';
 	while (i <= 'z')
 	{
-		ft_putchar(i);
+		write(1, &i, 1);
 		i++;
 	}
 }
